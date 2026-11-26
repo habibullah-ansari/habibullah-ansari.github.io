@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spice Route Kitchen | Restaurant in Surat (Demo Landing Page)</title>
+<meta name="description" content="Spice Route Kitchen is a demo restaurant landing page for Surat with a menu, opening hours and table booking. Built by Habibullah Ansari with HTML, CSS and JavaScript.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Spice Route Kitchen | Restaurant in Surat">
+<meta property="og:description" content="Fresh Gujarati and North Indian food. See the menu and book a table.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2b1710">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Spice Route Kitchen","servesCuisine":["Gujarati","North Indian"],"address":{"@type":"PostalAddress","addressLocality":"Surat","addressRegion":"Gujarat","addressCountry":"IN"},"openingHours":"Mo-Su 11:00-23:00","priceRange":"₹₹"}</script>
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<nav aria-label="Main"><b>Spice Route</b><div><a href="#menu">Menu</a><a href="#about">About</a><a href="#visit">Visit</a><a class="btn" href="#book" style="padding:8px 18px">Book a table</a></div></nav>
+<header class="hero"><span class="eyebrow">Surat · Since 2015</span><h1>Fresh Gujarati and North Indian food</h1><p>Cooked daily with local ingredients and whole spices. Come with family and friends, or order for your next event.</p><a class="btn" href="#book">Book a table</a><a class="btn" href="#menu">See the menu</a></header>
+<main>
+<section id="about"><h2>Why guests love us</h2><p class="sub">Simple food, done properly.</p>
+<div class="g3"><div class="c"><div class="e">🌶️</div><h3>Fresh spices</h3><p>We grind our masalas in small batches every morning.</p></div><div class="c"><div class="e">🥘</div><h3>Cooked to order</h3><p>Every dish is made when you order it, so it reaches you hot.</p></div><div class="c"><div class="e">👨‍👩‍👧</div><h3>Family friendly</h3><p>Large tables, a kids menu and a quiet seating area.</p></div></div></section>
+
+<section id="menu"><h2>Our menu</h2><p class="sub">A few favourites from each section.</p>
+<div class="tabs" role="tablist" aria-label="Menu sections"></div><div class="menu" id="mn" role="tabpanel"></div></section>
+
+<section id="visit"><div class="hrs"><div><h2>Opening hours</h2><p class="sub">Open every day.</p><p><b>Mon to Sun:</b> 11:00 AM to 11:00 PM<br><b>Kitchen closes:</b> 10:30 PM</p></div>
+<div><h2>Find us</h2><p class="sub">Surat, Gujarat, India</p><p>Free parking is available. Call us for directions or group bookings.</p></div></div></section>
+
+<section><h2>What guests say</h2><p class="sub">Sample reviews for this demo.</p>
+<div class="g3"><div class="c"><p class="rev">“The undhiyu tasted like home. Fast service too.”</p><p style="margin-top:8px"><b>Meera S.</b> · ★★★★★</p></div><div class="c"><p class="rev">“Great place for a family dinner. The kids loved the paneer.”</p><p style="margin-top:8px"><b>Rohan P.</b> · ★★★★★</p></div><div class="c"><p class="rev">“Clean, calm and the thali is good value.”</p><p style="margin-top:8px"><b>Farhan K.</b> · ★★★★☆</p></div></div></section>
+
+<section id="book"><h2>Book a table</h2><p class="sub">Tell us when you are coming and we will keep a table ready.</p>
+<form id="f"><input id="n" placeholder="Your name" aria-label="Your name" required>
+<div class="row"><input id="d" type="date" aria-label="Date" required><select id="g" aria-label="Guests"><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 to 8 guests</option></select></div>
+<button class="btn" type="submit">Request table</button><div id="ok" role="status"></div></form></section>
+</main>
+<footer>© 2026 Spice Route Kitchen (demo). Website built by <a href="../../index.html">Habibullah Ansari</a>.</footer>
+<script src="js/script.js" defer></script>
+</body>
+</html>
