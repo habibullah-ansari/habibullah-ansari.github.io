@@ -432,7 +432,7 @@ document.querySelectorAll(".dots button").forEach(function(b){b.onclick=function
 // contact form opens email app
 var cf=document.getElementById("f"),V=function(i){return document.getElementById(i).value.trim()};
 function brief(){return ["Name: "+V("fn"),"Email: "+V("fe"),"Phone/WhatsApp: "+(V("fp")||"-"),"Business: "+(V("fb")||"-"),"Project type: "+V("ft"),"Deadline: "+V("fd"),"Preferred contact: "+V("fc"),"Reference link: "+(V("fl")||"-"),"","Project details:",V("fm")].join("\n")}
-var FORMSPREE_ID=""; // paste your Formspree form ID here after hosting the site, e.g. "xyzabcde"
+var FORMSPREE_ID="xljbzvao"; // paste your Formspree form ID here after hosting the site, e.g. "xyzabcde"
 function viaEmail(){location.href="mailto:ansarihabibullah95374@gmail.com?subject="+encodeURIComponent("Project enquiry: "+V("ft")+" ("+V("fn")+")")+"&body="+encodeURIComponent(brief());document.getElementById("fs").textContent="Your email app is opening with all your details. Press send there."}
 cf.onsubmit=function(e){e.preventDefault();var fs=document.getElementById("fs");
  if(!FORMSPREE_ID)return viaEmail();
