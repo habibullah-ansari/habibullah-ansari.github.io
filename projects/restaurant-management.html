@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>TableTap | Restaurant Management System Demo by Habibullah</title>
+<meta name="description" content="A restaurant management demo with table status, order taking, automatic bill with GST and daily sales. Built with HTML, CSS and JavaScript by Habibullah Ansari.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#1a100b">
+<style>
+:root{--bg:#1a100b;--surface:#26180f;--line:#43291b;--text:#f7ecdf;--muted:#b9a08c;--accent:#e0a43a;--accent2:#d9622b;color-scheme:dark;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--text);font:400 1rem/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+button{font:inherit;color:inherit}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+header,main{max-width:1150px;margin:auto;padding:0 5vw}
+header{padding-top:26px;display:flex;justify-content:space-between;align-items:flex-end;flex-wrap:wrap;gap:12px;margin-bottom:18px}
+h1{margin:0;font-size:clamp(1.6rem,4vw,2.3rem);letter-spacing:-.02em}
+h1 span{background:linear-gradient(120deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+header p{margin:2px 0 0;color:var(--muted)}
+.sales{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 18px}
+.sales small{color:var(--muted);display:block}.sales b{font-size:1.4rem}
+h2{margin:0 0 12px;font-size:1.05rem}
+.layout{display:grid;grid-template-columns:1.1fr 1fr;gap:18px}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:18px}
+.tables{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px}
+.tb{border:1px solid var(--line);background:var(--bg);border-radius:14px;padding:14px 10px;cursor:pointer;text-align:center;transition:transform .15s,border-color .15s}
+.tb:hover{transform:translateY(-3px)}
+.tb b{display:block;font-size:1.1rem}
+.tb small{font-size:.8rem}
+.tb.free{border-color:#4cd9a066}.tb.free small{color:#4cd9a0}
+.tb.busy{border-color:#ffb74d99}.tb.busy small{color:#ffb74d}
+.tb[aria-pressed=true]{outline:2px solid var(--accent);outline-offset:2px}
+.menu{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px;margin:14px 0}
+.mi{border:1px solid var(--line);background:var(--bg);border-radius:12px;padding:10px;cursor:pointer;text-align:left}
+.mi:hover:not(:disabled){border-color:var(--accent)}
+.mi:disabled{opacity:.4;cursor:not-allowed}
+.mi span{display:block;color:var(--muted);font-size:.85rem}
+.ln{display:flex;justify-content:space-between;align-items:center;gap:8px;padding:8px 0;border-bottom:1px dashed var(--line)}
+.ln div{display:flex;align-items:center;gap:6px}
+.ln button{width:26px;height:26px;border-radius:8px;border:1px solid var(--line);background:var(--bg);cursor:pointer}
+.tot{display:grid;gap:4px;margin-top:12px}
+.tot div{display:flex;justify-content:space-between;color:var(--muted)}
+.tot .g{color:var(--text);font-weight:800;font-size:1.2rem}
+.btn{margin-top:12px;width:100%;background:linear-gradient(120deg,var(--accent),var(--accent2));color:#1f1206;border:0;border-radius:12px;padding:12px;font-weight:700;cursor:pointer}
+.btn:disabled{opacity:.4;cursor:not-allowed}
+.muted{color:var(--muted)}
+#msg{min-height:1.5em;color:var(--accent2);font-weight:600;margin-top:8px}
+footer{text-align:center;color:var(--muted);padding:26px 5vw;border-top:1px solid var(--line);margin-top:40px;font-size:.9rem}
+footer a{color:var(--accent)}
+@media (max-width:860px){.layout{grid-template-columns:1fr}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+</head>
+<body>
+<header><div><h1>Table<span>Tap</span></h1><p>Pick a table, add dishes and print the bill. Sample menu loaded.</p></div><div class="sales"><small>Today’s sales</small><b id="sl">₹0</b></div></header>
+<main class="layout">
+ <section class="card"><h2>Tables</h2><div class="tables" id="tb"></div><p class="muted" style="font-size:.85rem;margin-bottom:0">Green is free, orange has an open order.</p></section>
+ <section class="card" aria-live="polite"><h2 id="ot">Select a table</h2><div id="mn" class="menu"></div><div id="ol"></div><div class="tot" id="tt"></div><button class="btn" id="pay" disabled>Generate bill and free table</button><div id="msg" role="status"></div></section>
+</main>
+<footer>Demo project by <a href="../index.html">Habibullah Ansari</a>. Data is saved in this browser only.</footer>
+<script>
+(function(){
+var MENU=[["Paneer Tikka",249],["Veg Spring Rolls",169],["Butter Paneer",299],["Gujarati Thali",349],["Butter Naan",49],["Jeera Rice",129],["Masala Chaas",59],["Gulab Jamun",99]];
+var $=function(x){return document.getElementById(x)},R=function(v){return "₹"+v.toLocaleString("en-IN")};
+var S;try{S=JSON.parse(localStorage.getItem("tt")||"null")}catch(e){}
+if(!S){S={t:[1,2,3,4,5,6,7,8].map(function(i){return {n:i,o:{}}}),sales:0};S.t[1].o={"Paneer Tikka":1,"Masala Chaas":2};S.t[4].o={"Gujarati Thali":2}}
+var sel=null;
+function save(){try{localStorage.setItem("tt",JSON.stringify(S))}catch(e){}}
+function sub(o){return Object.keys(o).reduce(function(a,k){return a+o[k]*MENU.filter(function(m){return m[0]===k})[0][1]},0)}
+function draw(){
+ $("sl").textContent=R(S.sales);
+ $("tb").innerHTML=S.t.map(function(t){var b=Object.keys(t.o).length>0;return '<button class="tb '+(b?'busy':'free')+'" data-n="'+t.n+'" aria-pressed="'+(sel===t.n)+'"><b>Table '+t.n+'</b><small>'+(b?R(sub(t.o))+' open':'Free')+'</small></button>'}).join("");
+ var t=S.t.filter(function(x){return x.n===sel})[0];
+ $("ot").textContent=t?"Order for Table "+t.n:"Select a table";
+ $("mn").innerHTML=MENU.map(function(m){return '<button class="mi" data-a="'+m[0]+'"'+(t?'':' disabled')+'><b>'+m[0]+'</b><span>'+R(m[1])+'</span></button>'}).join("");
+ var o=t?t.o:{},ks=Object.keys(o);
+ $("ol").innerHTML=ks.length?ks.map(function(k){return '<div class="ln"><span>'+k+'</span><div><button data-m="'+k+'" aria-label="Remove one '+k+'">−</button><b>'+o[k]+'</b><button data-p="'+k+'" aria-label="Add one '+k+'">+</button></div></div>'}).join(""):'<p class="muted">'+(t?"No items yet. Tap a dish above.":"Choose a table to start an order.")+'</p>';
+ var s=sub(o),g=Math.round(s*.05);
+ $("tt").innerHTML=ks.length?'<div><span>Subtotal</span><span>'+R(s)+'</span></div><div><span>GST (5%)</span><span>'+R(g)+'</span></div><div class="g"><span>Total</span><span>'+R(s+g)+'</span></div>':"";
+ $("pay").disabled=!ks.length;save()}
+document.addEventListener("click",function(e){var b=e.target.closest("button");if(!b)return;var t=S.t.filter(function(x){return x.n===sel})[0],d=b.dataset;
+ if(d.n){sel=+d.n;$("msg").textContent=""}
+ if(d.a&&t){t.o[d.a]=(t.o[d.a]||0)+1}
+ if(d.p&&t){t.o[d.p]++}
+ if(d.m&&t){if(--t.o[d.m]<1)delete t.o[d.m]}
+ if(b.id==="pay"&&t){var s=sub(t.o),g=Math.round(s*.05);S.sales+=s+g;t.o={};$("msg").textContent="Table "+t.n+" billed "+R(s+g)+" and is free now."}
+ draw()});
+draw();
+})();
+</script>
+</body>
+</html>

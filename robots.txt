@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://habibullah-ansari.github.io/sitemap.xml

@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Spice Route Kitchen | Restaurant in Surat (Demo Landing Page)</title>
+<meta name="description" content="Spice Route Kitchen is a demo restaurant landing page for Surat with a menu, opening hours and table booking. Built by Habibullah Ansari with HTML, CSS and JavaScript.">
+<meta name="robots" content="index, follow">
+<meta property="og:title" content="Spice Route Kitchen | Restaurant in Surat">
+<meta property="og:description" content="Fresh Gujarati and North Indian food. See the menu and book a table.">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="#2b1710">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"Restaurant","name":"Spice Route Kitchen","servesCuisine":["Gujarati","North Indian"],"address":{"@type":"PostalAddress","addressLocality":"Surat","addressRegion":"Gujarat","addressCountry":"IN"},"openingHours":"Mo-Su 11:00-23:00","priceRange":"₹₹"}</script>
+<style>
+:root{--bg:#fff8ef;--surface:#fff;--ink:#2b1710;--muted:#7a655a;--line:#efdfcc;--brand:#c2410c;--gold:#e0a43a;box-sizing:border-box}
+*,*::before,*::after{box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:70px}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.05rem/1.7 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;padding-top:env(safe-area-inset-top,0px)}
+h1,h2,h3{font-family:Georgia,"Times New Roman",serif;line-height:1.15;margin:0}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--brand);outline-offset:3px}
+nav{position:sticky;top:0;z-index:10;display:flex;justify-content:space-between;align-items:center;padding:12px 5vw;background:#fff8efee;backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+nav b{font:700 1.3rem Georgia,serif;color:var(--brand)}
+nav div{display:flex;gap:20px;align-items:center;overflow-x:auto;scrollbar-width:none}
+nav a{text-decoration:none;white-space:nowrap;font-size:.95rem}
+.btn{display:inline-block;background:var(--brand);color:#fff!important;padding:12px 24px;border-radius:99px;text-decoration:none;font-weight:600;border:0;cursor:pointer;font:inherit;transition:transform .2s,background .2s}
+.btn:hover{transform:translateY(-2px);background:#9a3412}
+.hero{background:radial-gradient(circle at 75% 30%,#5a2a14,#2b1710 65%);color:#fff8ef;padding:90px 5vw 100px;text-align:center}
+.hero h1{font-size:clamp(2.4rem,7vw,4.6rem);max-width:15ch;margin:14px auto}
+.hero p{max-width:52ch;margin:0 auto 28px;color:#e9d5c0}
+.eyebrow{color:var(--gold);letter-spacing:.2em;text-transform:uppercase;font-size:.8rem;font-weight:600}
+.hero .btn+.btn{background:transparent;border:1px solid #fff8ef66;margin-left:10px}
+section{padding:80px 5vw;max-width:1100px;margin:auto}
+h2{font-size:clamp(1.8rem,4vw,2.6rem);margin-bottom:10px}
+.sub{color:var(--muted);margin:0 0 34px;max-width:56ch}
+.g3{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:18px}
+.c{background:var(--surface);border:1px solid var(--line);border-radius:18px;padding:24px}
+.c .e{font-size:2.2rem}
+.c h3{font-size:1.2rem;margin:6px 0 4px}
+.c p{margin:0;color:var(--muted);font-size:.97rem}
+.tabs{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:22px}
+.tabs button{border:1px solid var(--line);background:var(--surface);border-radius:99px;padding:8px 20px;cursor:pointer;font:inherit}
+.tabs button[aria-selected=true]{background:var(--brand);color:#fff;border-color:var(--brand)}
+.menu{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:14px 36px}
+.m{display:flex;justify-content:space-between;gap:14px;padding:14px 0;border-bottom:1px dashed var(--line)}
+.m b{display:block;font-family:Georgia,serif;font-size:1.1rem}
+.m span{color:var(--muted);font-size:.93rem}
+.m em{font-style:normal;font-weight:700;color:var(--brand)}
+.hrs{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.rev{font-style:italic;color:var(--ink)!important}
+form{display:grid;gap:12px;max-width:520px}
+input,select{background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:13px 15px;font:inherit;color:var(--ink);width:100%}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+#ok{color:var(--brand);font-weight:600;min-height:1.5em}
+footer{background:#2b1710;color:#e9d5c0;text-align:center;padding:36px 5vw;font-size:.92rem}
+footer a{color:var(--gold)}
+@media (max-width:700px){.hrs,.row{grid-template-columns:1fr}.hero .btn+.btn{margin:12px 0 0}section{padding:56px 5vw}}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<nav aria-label="Main"><b>Spice Route</b><div><a href="#menu">Menu</a><a href="#about">About</a><a href="#visit">Visit</a><a class="btn" href="#book" style="padding:8px 18px">Book a table</a></div></nav>
+<header class="hero"><span class="eyebrow">Surat · Since 2015</span><h1>Fresh Gujarati and North Indian food</h1><p>Cooked daily with local ingredients and whole spices. Come with family and friends, or order for your next event.</p><a class="btn" href="#book">Book a table</a><a class="btn" href="#menu">See the menu</a></header>
+<main>
+<section id="about"><h2>Why guests love us</h2><p class="sub">Simple food, done properly.</p>
+<div class="g3"><div class="c"><div class="e">🌶️</div><h3>Fresh spices</h3><p>We grind our masalas in small batches every morning.</p></div><div class="c"><div class="e">🥘</div><h3>Cooked to order</h3><p>Every dish is made when you order it, so it reaches you hot.</p></div><div class="c"><div class="e">👨‍👩‍👧</div><h3>Family friendly</h3><p>Large tables, a kids menu and a quiet seating area.</p></div></div></section>
+
+<section id="menu"><h2>Our menu</h2><p class="sub">A few favourites from each section.</p>
+<div class="tabs" role="tablist" aria-label="Menu sections"></div><div class="menu" id="mn" role="tabpanel"></div></section>
+
+<section id="visit"><div class="hrs"><div><h2>Opening hours</h2><p class="sub">Open every day.</p><p><b>Mon to Sun:</b> 11:00 AM to 11:00 PM<br><b>Kitchen closes:</b> 10:30 PM</p></div>
+<div><h2>Find us</h2><p class="sub">Surat, Gujarat, India</p><p>Free parking is available. Call us for directions or group bookings.</p></div></div></section>
+
+<section><h2>What guests say</h2><p class="sub">Sample reviews for this demo.</p>
+<div class="g3"><div class="c"><p class="rev">“The undhiyu tasted like home. Fast service too.”</p><p style="margin-top:8px"><b>Meera S.</b> · ★★★★★</p></div><div class="c"><p class="rev">“Great place for a family dinner. The kids loved the paneer.”</p><p style="margin-top:8px"><b>Rohan P.</b> · ★★★★★</p></div><div class="c"><p class="rev">“Clean, calm and the thali is good value.”</p><p style="margin-top:8px"><b>Farhan K.</b> · ★★★★☆</p></div></div></section>
+
+<section id="book"><h2>Book a table</h2><p class="sub">Tell us when you are coming and we will keep a table ready.</p>
+<form id="f"><input id="n" placeholder="Your name" aria-label="Your name" required>
+<div class="row"><input id="d" type="date" aria-label="Date" required><select id="g" aria-label="Guests"><option>2 guests</option><option>3 guests</option><option>4 guests</option><option>5 to 8 guests</option></select></div>
+<button class="btn" type="submit">Request table</button><div id="ok" role="status"></div></form></section>
+</main>
+<footer>© 2026 Spice Route Kitchen (demo). Website built by <a href="../index.html">Habibullah Ansari</a>.</footer>
+<script>
+(function(){
+var D={"Starters":[["Paneer Tikka","Smoky cottage cheese with mint chutney",249],["Khaman Dhokla","Soft steamed gram flour cakes",129],["Veg Spring Rolls","Crispy rolls with sweet chilli sauce",169]],
+"Main course":[["Surti Undhiyu","Winter vegetables in green masala",279],["Butter Paneer Masala","Creamy tomato gravy",299],["Gujarati Thali","Dal, kadhi, sabzi, roti, rice and sweet",349]],
+"Desserts":[["Gulab Jamun","Warm milk dumplings in syrup",99],["Shrikhand","Saffron strained yogurt",119],["Kulfi Falooda","Pistachio kulfi with vermicelli",149]]};
+var T=document.querySelector(".tabs"),M=document.getElementById("mn");
+Object.keys(D).forEach(function(k,i){var b=document.createElement("button");b.textContent=k;b.setAttribute("role","tab");b.onclick=function(){show(k)};T.appendChild(b)});
+function show(k){Array.prototype.forEach.call(T.children,function(b){b.setAttribute("aria-selected",b.textContent===k)});
+ M.innerHTML=D[k].map(function(x){return '<div class="m"><div><b>'+x[0]+'</b><span>'+x[1]+'</span></div><em>₹'+x[2]+'</em></div>'}).join("")}
+show("Starters");
+var d=document.getElementById("d");d.min=new Date().toISOString().slice(0,10);
+document.getElementById("f").onsubmit=function(e){e.preventDefault();
+ document.getElementById("ok").textContent="Thank you, "+document.getElementById("n").value+"! Your request for "+document.getElementById("g").value+" on "+d.value+" is received. (Demo form)";e.target.reset()};
+})();
+</script>
+</body>
+</html>
