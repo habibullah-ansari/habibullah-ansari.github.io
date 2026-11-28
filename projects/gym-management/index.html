@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>IronFit | Gym Management System Demo by Habibullah</title>
+<meta name="description" content="A gym management demo to add members, choose plans, track expiry dates, check members in and see monthly revenue. Built with HTML, CSS and JavaScript by Habibullah Ansari.">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#0c0c0d">
+<link rel="canonical" href="https://habibullah-ansari.github.io/projects/gym-management/">
+<meta property="og:url" content="https://habibullah-ansari.github.io/projects/gym-management/">
+<meta property="og:image" content="https://habibullah-ansari.github.io/images/og-image.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" type="image/png" sizes="32x32" href="../../images/favicon-32.png">
+<link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+<header><h1>Iron<span>Fit</span> Manager</h1><p>Manage members, plans and daily check-ins in one place. Sample data is loaded.</p></header>
+<main>
+<div class="kpis" id="k" aria-live="polite"></div>
+<div class="tabs" role="tablist"><button role="tab" data-t="m" aria-selected="true">Members</button><button role="tab" data-t="c" aria-selected="false">Today’s check-ins</button></div>
+<div id="msg" role="status"></div>
+<section id="pm">
+ <div class="bar"><input type="search" id="q" placeholder="Search members" aria-label="Search members"><select id="fl" aria-label="Filter by status"><option>All</option><option>Active</option><option>Expiring</option><option>Expired</option></select><button class="btn" id="tg">+ Add member</button></div>
+ <div class="card" id="add"><form id="f"><label>Name<input id="nm" required maxlength="40"></label><label>Phone<input id="ph" inputmode="numeric" maxlength="10" pattern="[0-9]{10}" placeholder="10 digits" required></label><label>Plan<select id="pl"></select></label><button class="btn" type="submit">Save member</button></form></div>
+ <div class="card tw"><table><thead><tr><th>Member</th><th>Plan</th><th>Expires</th><th>Status</th><th>Actions</th></tr></thead><tbody id="tb"></tbody></table></div>
+</section>
+<section id="pc" hidden><div class="card tw"><table><thead><tr><th>Time</th><th>Member</th><th>Plan</th></tr></thead><tbody id="ci"></tbody></table></div></section>
+</main>
+<footer>Demo project by <a href="../../index.html">Habibullah Ansari</a>. Data is saved in this browser only.</footer>
+<script src="js/script.js" defer></script>
+</body>
+</html>

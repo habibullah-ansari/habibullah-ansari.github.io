@@ -18,10 +18,11 @@ Responsive portfolio website built with **HTML5, CSS3 and JavaScript** (no frame
 index.html                 portfolio page
 css/style.css              portfolio styles
 js/main.js                 portfolio scripts
-images/                    photos used in the portfolio
+images/                    optimised photos (WebP), icons, social preview image
 Habibullah_Ansari_Resume.pdf
 projects/<project>/        index.html, css/, js/, images/ (each project)
 robots.txt, sitemap.xml    SEO files
+404.html                   page shown for wrong links
 ```
 
 ## Run locally
